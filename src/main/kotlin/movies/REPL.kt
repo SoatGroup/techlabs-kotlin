@@ -1,6 +1,5 @@
 package movies
 
-import internal.REMPLACE_MOI
 import java.io.File
 import java.util.*
 
@@ -28,6 +27,7 @@ fun affiche(title: String, data: Collection<Any>): Unit {
     data.map({"→ " + it.toString()}).forEach(::println)
 }
 
+
 fun main(args: Array<String>) {
 
     println(AsciiArt.bar(10))
@@ -37,6 +37,7 @@ fun main(args: Array<String>) {
 ========= CATALOGUE DE FILM ======
 
   ****    🙇  ~(Bonjour !)     *****
+
 """
 
     println(helloWorld)
@@ -54,9 +55,14 @@ fun main(args: Array<String>) {
             "LIST" -> affiche("~~~ Liste de films ~~~", repository.list())
             "GET" -> affiche("~~~ Fiche film ~~~", repository.get(cmd.args))
             "ADD" -> affiche("~~~ Ajout du film ~~~", repository.add(cmd.args))
-            "CATEGORIES" -> affiche("~~~ Catégories ~~~", REMPLACE_MOI("Récupération de la liste des catégories disponibles dans le repository") as Collection<Any>)
+            "CATEGORIES" -> affiche("~~~ Catégories ~~~", repository.categories)
             "CATEGORY" -> {
-                REMPLACE_MOI("Affiche les films correspondant à cette catégorie. Si <limit>, affiche max <limit> films")
+                val result = if(cmd.option.isBlank()) {
+                    repository.moviesWithCategory(cmd.args)
+                } else {
+                    repository.moviesWithCategory(cmd.args).take(cmd.option.toInt())
+                }
+                affiche("~~~ Catégorie ~~~", result)
             }
             "HELP" -> aide()
             "QUIT" -> quit = true

@@ -1,29 +1,28 @@
 package step4
 
-import internal.REMPLACE_MOI
 import org.junit.Assert
 import org.junit.Test
 
-/**
- *  Documentation associé : "Sealed Classes" dans kotlin-docs.pdf
- */
 sealed class Couleur {
     class Rouge : Couleur()
     class Vert : Couleur()
     class Bleue : Couleur()
 }
 
-fun couleurToHex(couleur: Couleur): String {
-   REMPLACE_MOI("""Utilisez l'expression 'when' pour convertir un objet couleur en chaine de caractère hexadecimal.
-   Notez que la class Couleur est sealed. Le cas par défaut n'est peut être pas à couvrir alors....""")
+fun coulorToHex(couleur: Couleur): String {
+    return when(couleur) {
+        is Couleur.Rouge -> "#FF0000"
+        is Couleur.Vert -> "#00FF00"
+        is Couleur.Bleue -> "#0000FF"
+    }
 }
 
 class SealedTest {
 
     @Test
     fun patternMathing() {
-        assert("#FF0000" == couleurToHex(Couleur.Rouge()))
-        assert("#00FF00" == couleurToHex(Couleur.Vert()))
-        assert("#0000FF" == couleurToHex(Couleur.Bleue()))
+        assert("#FF0000" == coulorToHex(Couleur.Rouge()))
+        assert("#00FF00" == coulorToHex(Couleur.Vert()))
+        assert("#0000FF" == coulorToHex(Couleur.Bleue()))
     }
 }

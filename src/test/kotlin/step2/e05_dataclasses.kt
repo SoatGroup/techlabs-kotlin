@@ -5,20 +5,12 @@ import org.junit.Test
 
 class DataClassesTest {
 
-    class Person {
-        val firstName: String? = null
-        val lastName: String? = null
-
-        fun copy(firstname: String? = null): Person {
-            throw TODO()
-        }
-    }
+    data class Person(val firstName: String = "Foo", val lastName: String = "Bar")
 
     @Test
     fun test1() {
         val person = Person()
         assert("Person(firstName=Foo, lastName=Bar)" == person.toString())
-        TODO("Use a dataclass to implement Person")
     }
 
     @Test
@@ -30,7 +22,7 @@ class DataClassesTest {
     @Test
     fun test3() {
         val person = Person()
-        val copy = person.copy(firstname = "${person.firstName} 2")
+        val copy = person.copy(firstName = "tititi")
 
         assert(copy.lastName == person.lastName)
         Assert.assertNotEquals(copy.firstName, person.firstName)

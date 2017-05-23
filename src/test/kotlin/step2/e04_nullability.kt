@@ -11,20 +11,12 @@ interface Mailer {
 }
 
 fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer) {
-    TODO("Reimplement without using any if")
-
-    if (client == null || message == null) return
-
-    val personalInfo = client.personalInfo
-    if (personalInfo == null) return
-
-    val email = personalInfo.email
-    if (email == null) return
-
-    mailer.sendMessage(email, message)
+    client?.personalInfo?.email?.let { m ->
+        message?.let { mailer.sendMessage(m, message) }
+    }
 }
 
-class NullabiliyTest{
+class NullabiliyTest {
     fun testSendMessageToClient(
             client: Client?,
             message: String?,
@@ -36,20 +28,20 @@ class NullabiliyTest{
             override fun sendMessage(actualEmail: String, actualMessage: String) {
                 invoked = true
                 Assert.assertEquals("The message is not as expected:",
-                                    message, actualMessage)
+                        message, actualMessage)
                 Assert.assertEquals("The email is not as expected:",
-                                    email, actualEmail)
+                        email, actualEmail)
             }
         })
         Assert.assertEquals("The function 'sendMessage' should${if (shouldBeInvoked) "" else "n't"} be invoked",
-                            shouldBeInvoked, invoked)
+                shouldBeInvoked, invoked)
     }
 
     @Test fun everythingIsOk() {
         testSendMessageToClient(Client(PersonalInfo("bob@gmail.com")),
-                                "Hi Bob! We have an awesome proposition for you...",
-                                "bob@gmail.com",
-                                true)
+                "Hi Bob! We have an awesome proposition for you...",
+                "bob@gmail.com",
+                true)
     }
 
     @Test fun noMessage() {

@@ -15,9 +15,8 @@ class LambdasTest {
 
     @Test fun e03_01() {
         val list = mutableListOf(19, 7, 90, 45, 4)
-        sort(list)
+        list.sortBy { a -> a }
         assert(list == listOf(4, 7, 19, 45, 90))
-        
-        TODO("Reimplement sort using lambdas")
+
     }
 }

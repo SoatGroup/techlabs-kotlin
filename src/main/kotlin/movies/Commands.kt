@@ -1,18 +1,13 @@
 package movies
 
-import internal.REMPLACE_MOI
 
-
-data class Command(val name: String, val args: String)
+data class Command(val name: String, val args: String, val option: String)
 
 object Commands {
     fun fromInput(input: String): Command {
-        REMPLACE_MOI("""
-fromInput doit extraire d'une chaine de caractère la commande associé.
+        val (name, args, option) = input.split(" ").take(3) + " " + " "
+        return Command(name.trim(), args.trim(), option.trim())
 
-Une commande est constituée du nom de la commande (ex: GET) et d'un argument (ex: azerty).
-L'argument sera vide si celui ci n'existe pas.
-        """)
     }
 
 }

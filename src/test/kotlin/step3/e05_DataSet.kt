@@ -3,6 +3,7 @@ package step3
 import movies.Dataset
 import movies.MoviesRepository
 import org.junit.After
+import org.junit.Assert
 import org.junit.Test
 import java.io.File
 
@@ -26,7 +27,7 @@ class e05_DataSet {
         val theBigShort = Dataset.parseLineToMovie("148626,\"Big Short, The (2015)\",Drama")
         assert("Big Short, The (2015)" == theBigShort.title)
         assert("148626" == theBigShort.id)
-        assert(theBigShort.genres.contains("Drama"))
+        Assert.assertTrue(theBigShort.genres.contains("Drama"))
     }
 
     @Test
@@ -34,8 +35,8 @@ class e05_DataSet {
         val (id, title, genres) = Dataset.parseLineToMovie("148881,World of Tomorrow (2015),Animation|Comedy")
         assert("World of Tomorrow (2015)" == title)
         assert("148881" == id)
-        assert(genres.contains("Animation"))
-        assert(genres.contains("Comedy"))
+        Assert.assertTrue(genres.contains("Animation"))
+        Assert.assertTrue(genres.contains("Comedy"))
     }
 
 
@@ -60,7 +61,14 @@ class e05_DataSet {
         val adventureMovies = movieRepository.moviesWithCategory("Adventure")
 
         val toyStoryAndTarzan = adventureMovies.map { it.title }.filter { it == "Toy Story (1995)" || it == "The Legend of Tarzan (2016)" }
-        assert(toyStoryAndTarzan.size == 2)
+        Assert.assertTrue(toyStoryAndTarzan.size == 2)
 
     }
+
+    // https://github.com/loicknuchel/scala-class
+
+    // TODO: finir la documentation
+    // TODO: sealed class
+    // TODO: méthode d'extention ?
+    // TODO: opérateur ?
 }

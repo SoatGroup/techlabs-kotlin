@@ -6,12 +6,22 @@ import java.io.File
 object Dataset {
 
     fun loadMovies(file: File, repository: MoviesRepository) {
-        REMPLACE_MOI("Cette méthode doit lire le fichier, créé un object Movie pour chaque film, et l'ajouter dans le repository. Attention ! la première ligne du fichier n'est pas un film...")
+        file.readLines().drop(1).map { parseLineToMovie(it) }.forEach { repository.add(it) }
     }
 
 
     fun parseLineToMovie(line: String): Movie {
-        REMPLACE_MOI("Cette méthode doit retourner la représentation d'une ligne en objet Movie. Attention ! Certaines lignes contiennent des virgules qui ne sont pas des séparateurs...")
+
+        return if (line.contains("\"")) {
+            val movieId = line.substringBefore(",")
+            val genres = line.substringAfterLast(",")
+            val title = line.substringAfter("\"").substringBefore("\"")
+            Movie(movieId, title, genres.split("|"))
+        } else {
+            val (movieId, title, genres) = line.split(",")
+            Movie(movieId, title, genres.split("|"))
+        }
+
     }
 
 }
