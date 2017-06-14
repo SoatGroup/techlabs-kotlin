@@ -2,21 +2,21 @@ package bbl
 
 
 sealed class Option {
-    class Some<T>(val objet: T) : Option()
-    object None : Option()
+    class Some<T>(val objet: T) : bbl.Option()
+    object None : bbl.Option()
 
 }
 
 
 fun main(args: Array<String>) {
-    val something: Option = Option.Some("hello")
+    val something: bbl.Option = bbl.Option.Some("hello")
 
 
     val str = when(something){
-        is Option.Some<*> -> {
+        is bbl.Option.Some<*> -> {
             something.objet.toString()
         }
-        is Option.None -> {
+        is bbl.Option.None -> {
             "none !"
         }
     }

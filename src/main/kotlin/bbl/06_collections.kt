@@ -2,11 +2,9 @@ package bbl
 
 
 fun main(args: Array<String>) {
-    val lst = emptyList<String>()
-    val lst2 = lst + "something" + "else"
 
-    lst2.filter { str -> str.length > 4 }
-            .map { it.toUpperCase() }
-            .forEach({ println(it) })
+    // TODO: créer une liste vide / y ajouter des elts
+    // TODO: filter + map (toUpperCase)
+    // TODO: print des différents elts
 
 }

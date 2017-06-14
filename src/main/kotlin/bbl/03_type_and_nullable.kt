@@ -1,20 +1,15 @@
 package bbl
 
 
-fun ERROR(): Nothing {
-    throw RuntimeException()
-}
-
 fun main(args: Array<String>) {
-    val a: Unit = Unit
-    val b: Int = 3
-    val c: Any = "hello"
- //   val d: Int = ERROR()
+
+    // TODO: déclarer type unit, int, any
+
+    // TODO: type nullable
+
+    // TODO: appeller méthode dec()
 
 
-    val aNull: String? = null
-    val bNull: Int? = 5
+    // TODO: type Nothing
 
-
-    val bStr: String? = bNull?.toString()
 }
