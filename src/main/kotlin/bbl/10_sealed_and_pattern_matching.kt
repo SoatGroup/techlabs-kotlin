@@ -12,12 +12,14 @@ fun main(args: Array<String>) {
     val something: Option = Option.Some("hello")
 
 
-    when(something){
+    val str = when(something){
         is Option.Some<*> -> {
-            println(something.objet)
+            something.objet.toString()
         }
         is Option.None -> {
-            println("none !")
+            "none !"
         }
     }
+
+    println(str)
 }
