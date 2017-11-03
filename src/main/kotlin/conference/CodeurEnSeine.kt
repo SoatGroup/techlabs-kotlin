@@ -46,8 +46,8 @@ fun main(args: Array<String>) {
 
         // 2 - Méthode et paramètre
         // Quelle est la syntaxe des paramètres ?
-        // Peux on utiliser des paramètres només ?
-        // Peut on utilser des paramètres par défaut ?
+        // Peut-on utiliser des paramètres només ?
+        // Peut-on utiliser des paramètres par défaut ?
 
         fun add(a: Int, b: Int): Int {
             return a + b
@@ -86,13 +86,15 @@ fun main(args: Array<String>) {
             throw RuntimeException()
         }
 
-        class Player(val name: String? = null)
 
         val a: Unit = Unit
         val b: Int = 3
         val c: Any = "hello"
-        //   val d: Int = ERROR()
+        // val d: Int = ERROR()
 
+
+
+        class Player(val name: String? = null)
         val player = Player()
 
         val aNull: String? = null
@@ -121,6 +123,10 @@ fun main(args: Array<String>) {
 
 
     `execute💩` {
+
+        // 4 - Data class
+        // Quelle est la différence entre une data class et une class ?
+        // clone d'un objet ? str ? génération des méthodes equals/hashcode ?
 
         class PersonName(var firstName: String, var lastName: String) {
 
@@ -165,6 +171,10 @@ fun main(args: Array<String>) {
 
 
     `execute💩` {
+        // 5 - Collections en kotlin
+        // Différentre entre une liste Java et Kotlin ?
+        // Niveau API, quelles sont les différences ?
+
         val lst = emptyList<String>()
         val lst2 = lst + "something" + "else"
 
@@ -195,6 +205,10 @@ fun main(args: Array<String>) {
 
 
     `execute💩` {
+        // 6 - Destructuring variable
+        // Mais c'est quoi donc ?
+        // Ca marche avec une liste ? Une data class ?
+
         val (a, b) = listOf("one", "two", "three")
 
         println(a)
@@ -226,6 +240,9 @@ fun main(args: Array<String>) {
 
 
     `execute💩` {
+        // 7 - Surchage d'opérateur en Kotlin
+        // On peut faire quoi avec ? On peut tout surcharger ?
+
         data class Vector(val x: Int, val y: Int) {
             operator fun plus(other: Vector): Vector {
                 return Vector(x + other.x, y + other.y)
@@ -256,6 +273,10 @@ fun main(args: Array<String>) {
 
 
     `execute💩` {
+
+        // 8 - Méthodes d'extentions.
+        // A quoi ça sert ?
+        // Quelle est la différence avec l'héritage ?
 
         fun String.pluralize(nb: Int): String {
             if (nb > 1) {
@@ -293,6 +314,11 @@ fun main(args: Array<String>) {
 
 
     `execute💩` {
+        // 9 - Sealed class
+        // Définition d'une Sealead class ?
+        // Exemple d'une sealed class ?
+        // Est-ce que cela remplace le pattern visitor ?
+
         val something: Option = Option.Some("hello")
 
 
@@ -331,6 +357,9 @@ fun main(args: Array<String>) {
 
 
     `execute💩` {
+
+        // 10 - Bonus : delegate
+        // On delegue la création d'un objet à une autre entité
         class UUIDGenerator {
             operator fun getValue(thisRef: Any?, property: KProperty<*>): UUID {
                 return UUID.randomUUID()
