@@ -356,18 +356,22 @@ fun main(args: Array<String>) {
 
 
 
-    `execute💩` {
+    `execute` {
 
         // 10 - Bonus : delegate
         // On delegue la création d'un objet à une autre entité
         class UUIDGenerator {
             operator fun getValue(thisRef: Any?, property: KProperty<*>): UUID {
+                println("crate a new uuid")
                 return UUID.randomUUID()
             }
         }
 
         val delegate: UUID by UUIDGenerator()
 
+        println(delegate)
+        println(delegate)
+        println(delegate)
         println(delegate)
     }
 
