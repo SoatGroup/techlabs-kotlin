@@ -356,7 +356,7 @@ fun main(args: Array<String>) {
 
 
 
-    `execute` {
+    `execute💩` {
 
         // 10 - Bonus : delegate
         // On delegue la création d'un objet à une autre entité
