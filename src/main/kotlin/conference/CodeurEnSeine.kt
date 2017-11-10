@@ -25,7 +25,6 @@ fun main(args: Array<String>) {
         // Qu'est ce que la String interpolation ?
 
 
-        // TODO: déclarer 2 variables et utiliser un println
     }
 
 
@@ -46,7 +45,6 @@ fun main(args: Array<String>) {
         // Peut-on utiliser des paramètres només ?
         // Peut-on utiliser des paramètres par défaut ?
 
-        // TODO: créer une méthode add avec 2 paramètres.
 
     }
 
@@ -78,11 +76,6 @@ fun main(args: Array<String>) {
         }
 
 
-        // TODO: déclarer une variable Unit/Int/Any/Nothing
-
-
-
-        // TODO: créer une class avec un champ nullable
 
     }
 
@@ -105,8 +98,7 @@ fun main(args: Array<String>) {
         // 4 - Data class
         // Quelle est la différence entre une data class et une class ?
         // clone d'un objet ? str ? génération des méthodes equals/hashcode ?
-
-        // TODO: Crer une class Person et DataPerson en data class
+        class Person(lastname: String, firstname: String)
 
     }
 
@@ -134,7 +126,6 @@ fun main(args: Array<String>) {
         // Niveau API, quelles sont les différences ?
 
 
-        // TODO: creer des listes et utiliser l'API
 
 
     }
@@ -164,7 +155,6 @@ fun main(args: Array<String>) {
         // Mais c'est quoi donc ?
         // Ca marche avec une liste ? Une data class ?
 
-        // TODO: descruire une liste pour une data class
     }
 
 
@@ -194,7 +184,6 @@ fun main(args: Array<String>) {
 
         }
 
-        // TODO: créer un opérateur sur le vecteur
     }
 
 
@@ -223,7 +212,6 @@ fun main(args: Array<String>) {
         // A quoi ça sert ?
         // Quelle est la différence avec l'héritage ?
 
-        // TODO: creer une méthode d'ext pluralizes
     }
 
 
@@ -254,7 +242,6 @@ fun main(args: Array<String>) {
         // Exemple d'une sealed class ?
         // Est-ce que cela remplace le pattern visitor ?
 
-        // TODO: utiliser sealed class Option
     }
 
 
@@ -290,7 +277,6 @@ fun main(args: Array<String>) {
             }
         }
 
-        // TODO: creer une variable depuis le delegate puis lazy
     }
 
 
