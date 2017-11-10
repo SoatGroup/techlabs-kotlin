@@ -1,4 +1,4 @@
-package conference
+package conference.solution
 
 import java.util.*
 import kotlin.reflect.KProperty
@@ -25,7 +25,10 @@ fun main(args: Array<String>) {
         // Qu'est ce que la String interpolation ?
 
 
-        // TODO: déclarer 2 variables et utiliser un println
+        val i: Int = 3
+        val str: String = "World"
+
+        println("Hello $str! Votre age ? $i")
     }
 
 
@@ -46,7 +49,15 @@ fun main(args: Array<String>) {
         // Peut-on utiliser des paramètres només ?
         // Peut-on utiliser des paramètres par défaut ?
 
-        // TODO: créer une méthode add avec 2 paramètres.
+        fun add(a: Int, b: Int): Int {
+            return a + b
+        }
+
+
+        println(add(1, 2))
+        println(add(a = 1, b = 2))
+        println(add(1, b = 2))
+        println(add(1, 2))
 
     }
 
@@ -71,18 +82,29 @@ fun main(args: Array<String>) {
         // 3 - Nouveaux types
         // Int - Int?
         // Unit / Any / Nothing
-
-
         fun ERROR(): Nothing {
             throw RuntimeException()
         }
 
 
-        // TODO: déclarer une variable Unit/Int/Any/Nothing
+        val a: Unit = Unit
+        val b: Int = 3
+        val c: Any = "hello"
+        // val d: Int = ERROR()
 
 
 
-        // TODO: créer une class avec un champ nullable
+        class Player(val name: String? = null)
+        val player = Player()
+
+        val aNull: String? = null
+        val bNull: Int? = 5
+
+
+        val bStr: String? = bNull?.toString()
+
+        val name = player.name ?: return@`execute💩`
+        println(name)
 
     }
 
@@ -106,7 +128,27 @@ fun main(args: Array<String>) {
         // Quelle est la différence entre une data class et une class ?
         // clone d'un objet ? str ? génération des méthodes equals/hashcode ?
 
-        // TODO: Crer une class Person et DataPerson en data class
+        class PersonName(var firstName: String, var lastName: String) {
+
+            fun concat(): String {
+                return "$firstName $lastName"
+            }
+
+        }
+
+
+        data class DataPersonName(var firstName: String, var lastName: String) {
+            fun concat(): String {
+                return "$firstName $lastName"
+            }
+        }
+
+        val personName = PersonName("first", "last")
+        val data = DataPersonName("first", "last")
+
+        val data2 = data.copy(lastName = "lastname copy")
+        println(personName)
+        println(data)
 
     }
 
@@ -133,9 +175,12 @@ fun main(args: Array<String>) {
         // Différentre entre une liste Java et Kotlin ?
         // Niveau API, quelles sont les différences ?
 
+        val lst = emptyList<String>()
+        val lst2 = lst + "something" + "else"
 
-        // TODO: creer des listes et utiliser l'API
-
+        lst2.filter { str -> str.length > 4 }
+                .map { it.toUpperCase() }
+                .forEach({ println(it) })
 
     }
 
@@ -164,7 +209,15 @@ fun main(args: Array<String>) {
         // Mais c'est quoi donc ?
         // Ca marche avec une liste ? Une data class ?
 
-        // TODO: descruire une liste pour une data class
+        val (a, b) = listOf("one", "two", "three")
+
+        println(a)
+        println(b)
+
+        data class Yop(val a: String, val b: String)
+
+        val yop = Yop("one", "two")
+        val (aa, bb) = yop
     }
 
 
@@ -191,10 +244,12 @@ fun main(args: Array<String>) {
         // On peut faire quoi avec ? On peut tout surcharger ?
 
         data class Vector(val x: Int, val y: Int) {
-
+            operator fun plus(other: Vector): Vector {
+                return Vector(x + other.x, y + other.y)
+            }
         }
 
-        // TODO: créer un opérateur sur le vecteur
+        println(Vector(1, 2) + Vector(4, 5))
     }
 
 
@@ -223,7 +278,17 @@ fun main(args: Array<String>) {
         // A quoi ça sert ?
         // Quelle est la différence avec l'héritage ?
 
-        // TODO: creer une méthode d'ext pluralizes
+        fun String.pluralize(nb: Int): String {
+            if (nb > 1) {
+                return this + "s"
+            } else {
+                return this
+            }
+        }
+
+        println("avion".pluralize(1))
+        println("avion".pluralize(2))
+        println("avion".pluralize(20))
     }
 
 
@@ -254,7 +319,19 @@ fun main(args: Array<String>) {
         // Exemple d'une sealed class ?
         // Est-ce que cela remplace le pattern visitor ?
 
-        // TODO: utiliser sealed class Option
+        val something: Option = Option.Some("hello")
+
+
+        val str = when (something) {
+            is Option.Some<*> -> {
+                something.objet.toString()
+            }
+            is Option.None -> {
+                "none !"
+            }
+        }
+
+        println(str)
     }
 
 
@@ -290,7 +367,12 @@ fun main(args: Array<String>) {
             }
         }
 
-        // TODO: creer une variable depuis le delegate puis lazy
+        val delegate: UUID by UUIDGenerator()
+
+        println(delegate)
+        println(delegate)
+        println(delegate)
+        println(delegate)
     }
 
 
