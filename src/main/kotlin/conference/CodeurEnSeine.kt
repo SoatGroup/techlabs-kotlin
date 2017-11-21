@@ -42,8 +42,8 @@ fun main(args: Array<String>) {
 
         // 2 - Méthode et paramètre
         // Quelle est la syntaxe des paramètres ?
-        // Peut-on utiliser des paramètres només ?
         // Peut-on utiliser des paramètres par défaut ?
+        // Peut-on utiliser des paramètres només ?
 
 
     }
@@ -72,7 +72,7 @@ fun main(args: Array<String>) {
 
 
         fun ERROR(): Nothing {
-            throw RuntimeException()
+            throw RuntimeException("*** OUPS ***")
         }
 
 
@@ -125,7 +125,8 @@ fun main(args: Array<String>) {
         // Différentre entre une liste Java et Kotlin ?
         // Niveau API, quelles sont les différences ?
 
-
+        val firstName = listOf("John", "John", "Arnold", "Bob")
+        val lastName = listOf("Doe", "Connor", "schwarzenegger", "Sponge")
 
 
     }
